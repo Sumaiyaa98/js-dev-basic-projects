@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Color Name:</h3>
+    <button onclick="colorChange()">ColorChanger</button>
+    <script>
+      let arrays = [
+        "red",
+        "blue",
+        "purple",
+        "pink",
+        "green",
+        "yellow",
+        "orange",
+        "teal",
+        "cyan",
+        "magenta",
+        "lime",
+        "indigo",
+        "violet",
+        "brown",
+        "gold",
+        "silver",
+        "maroon",
+        "navy",
+        "olive",
+        "aqua",
+      ];
+      const h3 = document.querySelector("h3");
+      function colorChange() {
+        let n = Math.floor(Math.random() * arrays.length);
+        let selectedColor = arrays[n];
+        document.body.style.backgroundColor = selectedColor;
+        h3.textContent = `Color Name: ${selectedColor}`;
+      }
+    </script>
+  </body>
+</html>
