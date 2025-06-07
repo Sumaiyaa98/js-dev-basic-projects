@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>To Do List</h2>
+    <input type="text" id="userTask" />
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      const addTaskBtn = document.querySelector("#addTaskBtn");
+      const taskList = document.getElementById("taskList");
+
+      addTaskBtn.addEventListener("click", function () {
+        const userTaskInput = document.querySelector("#userTask");
+        const userTask = userTaskInput.value.trim();
+
+        if (!userTask) {
+          alert("Add some task");
+          return;
+        }
+
+        const li = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.textContent = userTask;
+        li.appendChild(span);
+
+        const chBox = document.createElement("input");
+        chBox.type = "checkbox";
+        li.appendChild(chBox);
+
+        chBox.addEventListener("click", function () {
+          span.style.textDecoration = chBox.checked ? "line-through" : "none";
+        });
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "❌";
+        li.appendChild(removeBtn);
+
+        removeBtn.addEventListener("click", function () {
+          li.remove();
+        });
+
+        taskList.appendChild(li);
+        userTaskInput.value = "";
+      });
+    </script>
+  </body>
+</html>
