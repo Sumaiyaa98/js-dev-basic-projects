@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="billAmount">Enter your amount: </label>
+    <input type="number" min="0" id="billAmount" />
+    <br />
+    <label for="tip">Enter the tip: </label>
+    <input type="number" min="0" id="tip" />
+    <button id="calTotal">Total</button>
+    <h3>Your Total Amount:</h3>
+    <script>
+      let calTotal = document.querySelector("#calTotal");
+      const h3 = document.querySelector("h3");
+
+      calTotal.addEventListener("click", function () {
+        const billAmount = parseFloat(
+          document.querySelector("#billAmount").value
+        );
+        const tip = parseFloat(document.querySelector("#tip").value);
+
+        if (isNaN(billAmount) || isNaN(tip)) {
+          alert("Incorrect Input");
+          return;
+        }
+
+        const total = billAmount + (billAmount * tip) / 100;
+        h3.textContent = `Your total amount: $${total.toFixed(2)}`;
+      });
+    </script>
+  </body>
+</html>
