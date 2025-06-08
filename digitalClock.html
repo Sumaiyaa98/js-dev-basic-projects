@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h3>Digital Clock: </h3>
+    <script>
+        const h3 = document.querySelector('h3');
+
+
+         // Function to update the time
+        function updateTime(){
+            let date = new Date();
+            let time = date.toLocaleTimeString();
+             h3.textContent = `Digital Clock: ${time}`;
+
+        }
+       // Call once to show immediately
+        updateTime();
+
+        // Then update every second
+        setInterval(updateTime, 1000);
+
+
+ 
+    </script>
+</body>
+</html>
