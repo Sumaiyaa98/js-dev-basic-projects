@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Rock Paper Scissor Game</h2>
+    <h4>
+      Enter number on the basis of <br />1-Rock<br />
+      2-Scissor<br />
+      3-Paper
+    </h4>
+    <label for="userInput">Enter your answer: </label>
+    <input type="number" id="userInput" min="1" max="3" />
+    <button id="resultBtn">Show Result</button>
+    <h4 id="compAns">Computer Answer:</h4>
+    <h2 id="result">Result:</h2>
+    <script>
+      const resultBtn = document.querySelector("#resultBtn");
+      const compAns = document.querySelector("#compAns");
+      const result = document.querySelector("#result");
+
+      resultBtn.addEventListener("click", function () {
+        let computer = Math.floor(Math.random() * 3) + 1;
+        const userInput = parseInt(document.querySelector("#userInput").value);
+        if (!userInput || userInput > 3 || userInput < 1) {
+          alert("Invalid Input");
+          return;
+        }
+        let computerResult;
+        switch (computer) {
+          case 1:
+            computerResult = "Rock";
+            break;
+          case 2:
+            computerResult = "Paper";
+            break;
+          case 3:
+            computerResult = "Scissor";
+            break;
+          default:
+            computerResult = "Invalid";
+        }
+
+        let finalResult;
+        if (userInput === computer) {
+          finalResult = "Draw!";
+        } else if (
+          (userInput === 1 && computer === 3) ||
+          (userInput === 2 && computer === 1) ||
+          (userInput === 3 && computer === 2)
+        ) {
+          finalResult = "You Win!";
+        } else {
+          finalResult = "You Lose!";
+        }
+
+        compAns.textContent = `Computer Answer: ${computerResult}`;
+        result.textContent = `Result: ${finalResult}`;
+      });
+    </script>
+  </body>
+</html>

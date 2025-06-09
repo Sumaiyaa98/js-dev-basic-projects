@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="myText" oninput="countWord()"></textarea>
+    <h3>Word Count:</h3>
+    <script>
+      function countWord() {
+        let myText = document.querySelector("#myText").value;
+        let words = myText.trim();
+        const h3 = document.querySelector("h3");
+        let wordCount = words === "" ? 0 : words.split(/\s+/).length;
+        h3.textContent = `Word count: ${wordCount}`;
+      }
+    </script>
+  </body>
+</html>
