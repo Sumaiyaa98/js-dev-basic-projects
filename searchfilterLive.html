@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search Demo</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #searchBar { width: 300px; padding: 8px; }
+        #results { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <input 
+        id="searchBar" 
+        type="text" 
+        placeholder="Search fruits..." 
+        oninput="filterList()"
+    >
+    <div id="results"></div>
+
+    <script>
+        const fruits = ["Apple", "Banana", "Mango", "Strawberry", "Blueberry"];
+        const resultsDiv = document.getElementById('results');
+
+        // Initialize: Show full list on page load
+        displayResults(fruits);
+
+        function filterList() {
+            const searchTerm = document.getElementById('searchBar').value.trim();
+            
+            // If search is empty, reset to full list
+            if (!searchTerm) {
+                displayResults(fruits);
+                return;
+            }
+
+            const filtered = fruits.filter(fruit => 
+                fruit.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            // Handle "no results"
+            if (filtered.length === 0) {
+                resultsDiv.innerHTML = `No results for "<strong>${searchTerm}</strong>"`;
+            } else {
+                displayResults(filtered);
+            }
+        }
+
+        // Helper: Render array items as a comma-separated list
+        function displayResults(items) {
+            resultsDiv.innerHTML = items.join(', ');
+        }
+    </script>
+</body>
+</html>
